@@ -1,169 +1,153 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Palette, Zap, Globe, Cpu } from 'lucide-react';
+import { Code, Database, Palette, Zap, Globe, Cpu, Brain, Rocket } from 'lucide-react';
 
 export const AboutSection = () => {
-  const skillCategories = [
-    {
-      icon: Code,
-      title: 'Frontend',
-      skills: [
-        { name: 'React/Next.js', level: 95, color: 'from-blue-500 to-cyan-500' },
-        { name: 'TypeScript', level: 90, color: 'from-blue-600 to-blue-400' },
-        { name: 'Three.js/WebGL', level: 85, color: 'from-purple-500 to-pink-500' },
-      ]
-    },
-    {
-      icon: Database,
-      title: 'Backend',
-      skills: [
-        { name: 'Node.js', level: 88, color: 'from-green-500 to-emerald-500' },
-        { name: 'Python', level: 82, color: 'from-yellow-500 to-orange-500' },
-        { name: 'PostgreSQL', level: 80, color: 'from-indigo-500 to-purple-500' },
-      ]
-    },
-    {
-      icon: Palette,
-      title: 'Design',
-      skills: [
-        { name: 'UI/UX Design', level: 85, color: 'from-pink-500 to-rose-500' },
-        { name: 'Figma', level: 80, color: 'from-violet-500 to-purple-500' },
-        { name: 'Adobe Creative', level: 75, color: 'from-red-500 to-pink-500' },
-      ]
-    }
+  const skills = [
+    { name: 'React/Next.js', level: 95, category: 'Frontend', icon: Code, color: 'from-blue-500 to-cyan-400' },
+    { name: 'TypeScript', level: 90, category: 'Frontend', icon: Code, color: 'from-blue-600 to-indigo-400' },
+    { name: 'Three.js/WebGL', level: 85, category: 'Frontend', icon: Cpu, color: 'from-purple-500 to-pink-400' },
+    { name: 'Node.js', level: 88, category: 'Backend', icon: Database, color: 'from-green-500 to-emerald-400' },
+    { name: 'Python', level: 82, category: 'Backend', icon: Database, color: 'from-yellow-500 to-orange-400' },
+    { name: 'PostgreSQL', level: 80, category: 'Backend', icon: Database, color: 'from-indigo-500 to-purple-400' },
+    { name: 'UI/UX Design', level: 85, category: 'Design', icon: Palette, color: 'from-pink-500 to-rose-400' },
+    { name: 'Figma', level: 80, category: 'Design', icon: Palette, color: 'from-violet-500 to-purple-400' },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const highlights = [
+    { icon: Rocket, title: '5+ Years', subtitle: 'Experience', color: 'from-blue-500 to-purple-500' },
+    { icon: Globe, title: '50+ Projects', subtitle: 'Completed', color: 'from-green-500 to-blue-500' },
+    { icon: Brain, title: '20+ Technologies', subtitle: 'Mastered', color: 'from-purple-500 to-pink-500' },
+    { icon: Zap, title: '100%', subtitle: 'Client Satisfaction', color: 'from-orange-500 to-red-500' },
+  ];
 
   return (
-    <section id="about" className="py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent" />
+    <section id="about" className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-pink-900/20" />
+      <div className="absolute inset-0 cyber-grid opacity-10" />
       
       <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-6xl font-orbitron font-bold gradient-text mb-6">
+          <motion.h2 
+            className="text-5xl md:text-7xl font-orbitron font-bold gradient-text mb-6"
+            initial={{ scale: 0.8 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+          >
             About Me
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Passionate about creating digital experiences that bridge the gap between 
-            imagination and reality through code.
-          </p>
+          </motion.h2>
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"
+            initial={{ width: 0 }}
+            whileInView={{ width: 96 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+          />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+          {/* About Text */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="lg:col-span-2 space-y-6"
           >
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-white mb-4">My Journey</h3>
-              <p className="text-gray-300 leading-relaxed">
-                With over 5 years of experience in full-stack development, I specialize in 
-                creating immersive web applications that push the boundaries of what's possible 
-                in the browser. My passion lies in combining cutting-edge technologies with 
-                intuitive design to deliver exceptional user experiences.
+            <div className="glass-effect p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
+              <h3 className="text-3xl font-bold gradient-text mb-6">Digital Craftsman</h3>
+              <p className="text-gray-300 text-lg leading-relaxed mb-4">
+                I'm a passionate full-stack developer who bridges the gap between imagination and reality through code. 
+                With over 5 years of experience, I specialize in creating immersive web applications that push the 
+                boundaries of what's possible in the browser.
               </p>
-            </motion.div>
+              <p className="text-gray-400 leading-relaxed">
+                My journey began with curiosity about how websites work, and it has evolved into a deep passion for 
+                crafting exceptional digital experiences. I believe in the power of clean code, intuitive design, 
+                and innovative solutions.
+              </p>
+            </div>
 
-            <motion.div variants={itemVariants} className="glass-effect p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-white mb-4">What I Do</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { name: 'Frontend Development', icon: Globe },
-                  { name: 'Backend Architecture', icon: Database },
-                  { name: '3D Web Experiences', icon: Cpu },
-                  { name: 'UI/UX Design', icon: Palette }
-                ].map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-4 rounded-lg border border-blue-500/30 interactive"
-                  >
-                    <item.icon className="w-6 h-6 text-blue-400 mb-2" />
-                    <span className="text-blue-300 font-semibold text-sm">{item.name}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            {/* Highlights */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {highlights.map((highlight, index) => (
+                <motion.div
+                  key={highlight.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="glass-effect p-6 rounded-xl text-center border border-white/10 hover:border-white/20 transition-all duration-300"
+                >
+                  <div className={`w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r ${highlight.color} flex items-center justify-center`}>
+                    <highlight.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-1">{highlight.title}</h4>
+                  <p className="text-gray-400 text-sm">{highlight.subtitle}</p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
 
+          {/* Skills Sidebar */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <h3 className="text-3xl font-bold text-white mb-8 text-center lg:text-left">Technical Expertise</h3>
-            
-            {skillCategories.map((category, categoryIndex) => (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: categoryIndex * 0.2 }}
-                className="glass-effect p-6 rounded-xl"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg">
-                    <category.icon className="w-6 h-6 text-blue-400" />
+            <div className="glass-effect p-6 rounded-xl border border-purple-500/20">
+              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                <Zap className="w-6 h-6 mr-3 text-yellow-400" />
+                Core Technologies
+              </h3>
+              
+              <div className="space-y-4">
+                {['Frontend', 'Backend', 'Design'].map((category) => (
+                  <div key={category} className="space-y-3">
+                    <h4 className="text-sm font-semibold text-blue-400 uppercase tracking-wider">{category}</h4>
+                    {skills.filter(skill => skill.category === category).map((skill, index) => (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="space-y-2"
+                      >
+                        <div className="flex justify-between items-center">
+                          <div className="flex items-center space-x-2">
+                            <skill.icon className="w-4 h-4 text-gray-400" />
+                            <span className="text-white font-medium text-sm">{skill.name}</span>
+                          </div>
+                          <span className="text-blue-400 font-semibold text-sm">{skill.level}%</span>
+                        </div>
+                        
+                        <div className="h-2 bg-gray-800/50 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.5, delay: index * 0.1 }}
+                            className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative overflow-hidden`}
+                          >
+                            <div className="absolute inset-0 bg-white/30 animate-pulse" />
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
-                  <h4 className="text-xl font-bold text-white">{category.title}</h4>
-                </div>
-                
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: (categoryIndex * 0.2) + (skillIndex * 0.1) }}
-                      className="space-y-2"
-                    >
-                      <div className="flex justify-between items-center">
-                        <span className="text-white font-medium">{skill.name}</span>
-                        <span className="text-blue-400 font-semibold">{skill.level}%</span>
-                      </div>
-                      
-                      <div className="h-2 bg-gray-800/50 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.5, delay: (categoryIndex * 0.2) + (skillIndex * 0.1) }}
-                          className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative`}
-                        >
-                          <div className="absolute inset-0 bg-white/20 animate-pulse" />
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                ))}
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
