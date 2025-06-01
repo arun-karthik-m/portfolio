@@ -1,15 +1,37 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Code, Database, Palette, Zap, Globe, Cpu } from 'lucide-react';
 
 export const AboutSection = () => {
-  const skills = [
-    { name: 'JavaScript/TypeScript', level: 95 },
-    { name: 'React/Next.js', level: 90 },
-    { name: 'Node.js', level: 85 },
-    { name: 'Python', level: 80 },
-    { name: 'Three.js/WebGL', level: 75 },
-    { name: 'UI/UX Design', level: 85 },
+  const skillCategories = [
+    {
+      icon: Code,
+      title: 'Frontend',
+      skills: [
+        { name: 'React/Next.js', level: 95, color: 'from-blue-500 to-cyan-500' },
+        { name: 'TypeScript', level: 90, color: 'from-blue-600 to-blue-400' },
+        { name: 'Three.js/WebGL', level: 85, color: 'from-purple-500 to-pink-500' },
+      ]
+    },
+    {
+      icon: Database,
+      title: 'Backend',
+      skills: [
+        { name: 'Node.js', level: 88, color: 'from-green-500 to-emerald-500' },
+        { name: 'Python', level: 82, color: 'from-yellow-500 to-orange-500' },
+        { name: 'PostgreSQL', level: 80, color: 'from-indigo-500 to-purple-500' },
+      ]
+    },
+    {
+      icon: Palette,
+      title: 'Design',
+      skills: [
+        { name: 'UI/UX Design', level: 85, color: 'from-pink-500 to-rose-500' },
+        { name: 'Figma', level: 80, color: 'from-violet-500 to-purple-500' },
+        { name: 'Adobe Creative', level: 75, color: 'from-red-500 to-pink-500' },
+      ]
+    }
   ];
 
   const containerVariants = {
@@ -47,7 +69,7 @@ export const AboutSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -68,13 +90,19 @@ export const AboutSection = () => {
             <motion.div variants={itemVariants} className="glass-effect p-8 rounded-2xl">
               <h3 className="text-2xl font-bold text-white mb-4">What I Do</h3>
               <div className="grid grid-cols-2 gap-4">
-                {['Frontend Development', 'Backend Architecture', '3D Web Experiences', 'UI/UX Design'].map((item, index) => (
+                {[
+                  { name: 'Frontend Development', icon: Globe },
+                  { name: 'Backend Architecture', icon: Database },
+                  { name: '3D Web Experiences', icon: Cpu },
+                  { name: 'UI/UX Design', icon: Palette }
+                ].map((item, index) => (
                   <motion.div
-                    key={item}
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-4 rounded-lg border border-blue-500/30"
+                    key={item.name}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-4 rounded-lg border border-blue-500/30 interactive"
                   >
-                    <span className="text-blue-300 font-semibold">{item}</span>
+                    <item.icon className="w-6 h-6 text-blue-400 mb-2" />
+                    <span className="text-blue-300 font-semibold text-sm">{item.name}</span>
                   </motion.div>
                 ))}
               </div>
@@ -85,32 +113,54 @@ export const AboutSection = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <h3 className="text-3xl font-bold text-white mb-8">Technical Skills</h3>
+            <h3 className="text-3xl font-bold text-white mb-8 text-center lg:text-left">Technical Expertise</h3>
             
-            {skills.map((skill, index) => (
+            {skillCategories.map((category, categoryIndex) => (
               <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                key={category.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="space-y-2"
+                transition={{ delay: categoryIndex * 0.2 }}
+                className="glass-effect p-6 rounded-xl"
               >
-                <div className="flex justify-between items-center">
-                  <span className="text-white font-semibold">{skill.name}</span>
-                  <span className="text-blue-400">{skill.level}%</span>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg">
+                    <category.icon className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h4 className="text-xl font-bold text-white">{category.title}</h4>
                 </div>
                 
-                <div className="h-3 bg-gray-800 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                    className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-                  />
+                <div className="space-y-4">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.div
+                      key={skill.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: (categoryIndex * 0.2) + (skillIndex * 0.1) }}
+                      className="space-y-2"
+                    >
+                      <div className="flex justify-between items-center">
+                        <span className="text-white font-medium">{skill.name}</span>
+                        <span className="text-blue-400 font-semibold">{skill.level}%</span>
+                      </div>
+                      
+                      <div className="h-2 bg-gray-800/50 rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.5, delay: (categoryIndex * 0.2) + (skillIndex * 0.1) }}
+                          className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative`}
+                        >
+                          <div className="absolute inset-0 bg-white/20 animate-pulse" />
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             ))}

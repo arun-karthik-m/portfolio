@@ -70,11 +70,13 @@
 @layer base {
   * {
     @apply border-border;
+    cursor: none !important;
   }
   
   body {
     @apply bg-background text-foreground font-inter;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    cursor: none !important;
   }
   
   .dark body {
@@ -126,6 +128,10 @@
     linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
+}
+
+.interactive {
+  cursor: none !important;
 }
 
 @keyframes float {

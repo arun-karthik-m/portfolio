@@ -10,6 +10,7 @@ import { Navigation } from '@/components/portfolio/Navigation';
 import { Footer } from '@/components/portfolio/Footer';
 import { Preloader } from '@/components/portfolio/Preloader';
 import { ParticleBackground } from '@/components/portfolio/ParticleBackground';
+import { CustomCursor } from '@/components/portfolio/CustomCursor';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,8 +24,13 @@ const Index = () => {
     // Apply dark class to html element
     document.documentElement.classList.add('dark');
     document.body.style.backgroundColor = '#0a0a0a';
+    // Hide default cursor
+    document.body.style.cursor = 'none';
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.cursor = 'auto';
+    };
   }, []);
 
   const toggleDarkMode = () => {
@@ -39,8 +45,10 @@ const Index = () => {
   };
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
+    <div className={`min-h-screen ${darkMode ? 'dark' : ''}`} style={{ cursor: 'none' }}>
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900">
+        <CustomCursor />
+        
         <AnimatePresence>
           {isLoading && <Preloader />}
         </AnimatePresence>
