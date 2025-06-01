@@ -1,25 +1,53 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Palette, Zap, Globe, Cpu, Brain, Rocket } from 'lucide-react';
+import { 
+  Code, 
+  Laptop, 
+  Palette, 
+  Terminal, 
+  Server, 
+  Cloud, 
+  Layout 
+} from 'lucide-react';
 
 export const AboutSection = () => {
-  const skills = [
-    { name: 'React/Next.js', level: 95, category: 'Frontend', icon: Code, color: 'from-blue-500 to-cyan-400' },
-    { name: 'TypeScript', level: 90, category: 'Frontend', icon: Code, color: 'from-blue-600 to-indigo-400' },
-    { name: 'Three.js/WebGL', level: 85, category: 'Frontend', icon: Cpu, color: 'from-purple-500 to-pink-400' },
-    { name: 'Node.js', level: 88, category: 'Backend', icon: Database, color: 'from-green-500 to-emerald-400' },
-    { name: 'Python', level: 82, category: 'Backend', icon: Database, color: 'from-yellow-500 to-orange-400' },
-    { name: 'PostgreSQL', level: 80, category: 'Backend', icon: Database, color: 'from-indigo-500 to-purple-400' },
-    { name: 'UI/UX Design', level: 85, category: 'Design', icon: Palette, color: 'from-pink-500 to-rose-400' },
-    { name: 'Figma', level: 80, category: 'Design', icon: Palette, color: 'from-violet-500 to-purple-400' },
-  ];
-
-  const highlights = [
-    { icon: Rocket, title: '5+ Years', subtitle: 'Experience', color: 'from-blue-500 to-purple-500' },
-    { icon: Globe, title: '50+ Projects', subtitle: 'Completed', color: 'from-green-500 to-blue-500' },
-    { icon: Brain, title: '20+ Technologies', subtitle: 'Mastered', color: 'from-purple-500 to-pink-500' },
-    { icon: Zap, title: '100%', subtitle: 'Client Satisfaction', color: 'from-orange-500 to-red-500' },
+  const skillCategories = [
+    {
+      category: 'Languages',
+      skills: ['HTML5', 'CSS3', 'JavaScript (ES6+)'],
+      icon: Code,
+      color: 'from-blue-500 to-cyan-400'
+    },
+    {
+      category: 'Frameworks/Libraries',
+      skills: ['React.js', 'Next.js', 'Tailwind CSS', 'Bootstrap'],
+      icon: Laptop,
+      color: 'from-purple-500 to-pink-400'
+    },
+    {
+      category: 'Design & UI',
+      skills: ['Responsive Design', 'Figma (Basic)', 'CSS Animations'],
+      icon: Palette,
+      color: 'from-pink-500 to-rose-400'
+    },
+    {
+      category: 'Tools',
+      skills: ['Git','Cursor', 'Vercel', 'Loveable.dev'],
+      icon: Terminal,
+      color: 'from-green-500 to-emerald-400'
+    },
+    {
+      category: 'Backend Basics',
+      skills: ['REST APIs(basic)', 'Node.js (basic)', 'MySQL', 'Firebase'],
+      icon: Server,
+      color: 'from-indigo-500 to-purple-400'
+    },
+    {
+      category: 'Deployment',
+      skills: ['Vercel', 'Netlify', 'GitHub Pages'],
+      icon: Cloud,
+      color: 'from-orange-500 to-red-500'
+    },
   ];
 
   return (
@@ -53,101 +81,60 @@ export const AboutSection = () => {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid gap-8 mb-16">
           {/* About Text */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-6"
+            className="space-y-6"
           >
             <div className="glass-effect p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
               <h3 className="text-3xl font-bold gradient-text mb-6">Digital Craftsman</h3>
               <p className="text-gray-300 text-lg leading-relaxed mb-4">
-                I'm a passionate full-stack developer who bridges the gap between imagination and reality through code. 
-                With over 5 years of experience, I specialize in creating immersive web applications that push the 
-                boundaries of what's possible in the browser.
-              </p>
-              <p className="text-gray-400 leading-relaxed">
-                My journey began with curiosity about how websites work, and it has evolved into a deep passion for 
-                crafting exceptional digital experiences. I believe in the power of clean code, intuitive design, 
-                and innovative solutions.
+              Creative and performance-driven Front-End Developer with a strong grasp of HTML, CSS, JavaScript, and modern web development frameworks. Known for translating design concepts into responsive, accessible, and visually compelling interfaces. Adept at leveraging tools like Loveable.dev, Cursor, Vercel to enhance development efficiency and project delivery. Possess a solid foundation in coding and a passion for creating seamless user experiences. Thrive in collaborative environments and bring a unique blend of technical precision, design intuition, and problem-solving to every project.
               </p>
             </div>
 
-            {/* Highlights */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {highlights.map((highlight, index) => (
-                <motion.div
-                  key={highlight.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="glass-effect p-6 rounded-xl text-center border border-white/10 hover:border-white/20 transition-all duration-300"
-                >
-                  <div className={`w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-r ${highlight.color} flex items-center justify-center`}>
-                    <highlight.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h4 className="text-xl font-bold text-white mb-1">{highlight.title}</h4>
-                  <p className="text-gray-400 text-sm">{highlight.subtitle}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Skills Sidebar */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <div className="glass-effect p-6 rounded-xl border border-purple-500/20">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <Zap className="w-6 h-6 mr-3 text-yellow-400" />
-                Core Technologies
-              </h3>
-              
-              <div className="space-y-4">
-                {['Frontend', 'Backend', 'Design'].map((category) => (
-                  <div key={category} className="space-y-3">
-                    <h4 className="text-sm font-semibold text-blue-400 uppercase tracking-wider">{category}</h4>
-                    {skills.filter(skill => skill.category === category).map((skill, index) => (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className="space-y-2"
-                      >
-                        <div className="flex justify-between items-center">
-                          <div className="flex items-center space-x-2">
-                            <skill.icon className="w-4 h-4 text-gray-400" />
-                            <span className="text-white font-medium text-sm">{skill.name}</span>
-                          </div>
-                          <span className="text-blue-400 font-semibold text-sm">{skill.level}%</span>
-                        </div>
-                        
-                        <div className="h-2 bg-gray-800/50 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.5, delay: index * 0.1 }}
-                            className={`h-full bg-gradient-to-r ${skill.color} rounded-full relative overflow-hidden`}
-                          >
-                            <div className="absolute inset-0 bg-white/30 animate-pulse" />
-                          </motion.div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                ))}
+            {/* Skills Grid */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div className="glass-effect p-6 rounded-xl border border-purple-500/20">
+                <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
+                  <Code className="w-6 h-6 mr-3 text-yellow-400" />
+                  Skills
+                </h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {skillCategories.map((category, index) => (
+                    <motion.div
+                      key={category.category}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="glass-effect p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300"
+                    >
+                      <div className={`w-12 h-12 mb-4 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center`}>
+                        <category.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-3">{category.category}</h3>
+                      <ul className="space-y-2 text-gray-300">
+                        {category.skills.map((skill) => (
+                          <li key={skill} className="flex items-center">
+                            <span className="mr-2 text-blue-400">•</span>
+                            {skill}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

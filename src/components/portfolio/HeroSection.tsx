@@ -44,9 +44,9 @@ export const HeroSection = () => {
             transition={{ delay: 1.2 }}
             className="text-5xl md:text-7xl font-orbitron font-bold mb-6 glow-text"
           >
-            ALEX
+            Arun
             <br />
-            <span className="gradient-text">DEVELOPER</span>
+            <span className="gradient-text">Karthik</span>
           </motion.h1>
           
           <motion.p
