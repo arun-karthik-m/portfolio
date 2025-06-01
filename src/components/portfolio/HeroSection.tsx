@@ -1,42 +1,19 @@
 
-import React, { Suspense, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
+import React, { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 import { motion } from 'framer-motion';
-
-const AnimatedCube = () => {
-  const meshRef = useRef();
-  
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.3;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.5;
-    }
-  });
-
-  return (
-    <mesh ref={meshRef}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial 
-        color="#3b82f6"
-        roughness={0.1}
-        metalness={0.8}
-      />
-    </mesh>
-  );
-};
 
 const AnimatedSphere = () => {
   return (
-    <Sphere args={[1, 100, 200]} scale={2}>
-      <MeshDistortMaterial
-        color="#8b5cf6"
-        attach="material"
-        distort={0.3}
-        speed={1.5}
-        roughness={0}
+    <mesh>
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial 
+        color="#3b82f6"
+        roughness={0.1}
+        metalness={0.1}
       />
-    </Sphere>
+    </mesh>
   );
 };
 
@@ -61,45 +38,21 @@ export const HeroSection = () => {
             Hello, I'm
           </motion.p>
           
-          <div className="flex items-center justify-center md:justify-start gap-4 mb-6">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
-              className="text-5xl md:text-7xl font-orbitron font-bold glow-text"
-            >
-              ALEX
-            </motion.h1>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.4, type: "spring", stiffness: 200 }}
-              className="w-16 h-16 md:w-20 md:h-20"
-            >
-              <Canvas camera={{ position: [0, 0, 3], fov: 75 }}>
-                <Suspense fallback={null}>
-                  <ambientLight intensity={0.5} />
-                  <pointLight position={[10, 10, 10]} intensity={1} />
-                  <AnimatedCube />
-                </Suspense>
-              </Canvas>
-            </motion.div>
-          </div>
-          
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.6 }}
-            className="text-4xl md:text-6xl font-orbitron font-bold mb-6"
+            transition={{ delay: 1.2 }}
+            className="text-5xl md:text-7xl font-orbitron font-bold mb-6 glow-text"
           >
+            ALEX
+            <br />
             <span className="gradient-text">DEVELOPER</span>
-          </motion.h2>
+          </motion.h1>
           
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.8 }}
+            transition={{ delay: 1.4 }}
             className="text-xl text-gray-300 mb-8 max-w-lg"
           >
             Creative Full-Stack Developer crafting immersive digital experiences 
@@ -109,7 +62,7 @@ export const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2 }}
+            transition={{ delay: 1.6 }}
             className="flex flex-col sm:flex-row gap-4"
           >
             <motion.button
