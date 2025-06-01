@@ -1,20 +1,19 @@
 
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import { motion } from 'framer-motion';
 
 const AnimatedSphere = () => {
   return (
-    <Sphere visible args={[1, 100, 200]} scale={2}>
-      <MeshDistortMaterial
+    <mesh>
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial 
         color="#3b82f6"
-        attach="material"
-        distort={0.3}
-        speed={1.5}
-        roughness={0}
+        roughness={0.1}
+        metalness={0.1}
       />
-    </Sphere>
+    </mesh>
   );
 };
 
@@ -90,11 +89,19 @@ export const HeroSection = () => {
           transition={{ duration: 1, delay: 0.8 }}
           className="h-96 relative"
         >
-          <Canvas>
+          <Canvas 
+            camera={{ position: [0, 0, 5], fov: 75 }}
+            gl={{ antialias: true, alpha: true }}
+          >
             <Suspense fallback={null}>
-              <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
               <ambientLight intensity={0.5} />
-              <directionalLight position={[10, 10, 5]} intensity={1} />
+              <pointLight position={[10, 10, 10]} intensity={1} />
+              <OrbitControls 
+                enableZoom={false} 
+                autoRotate 
+                autoRotateSpeed={2}
+                enablePan={false}
+              />
               <AnimatedSphere />
             </Suspense>
           </Canvas>
