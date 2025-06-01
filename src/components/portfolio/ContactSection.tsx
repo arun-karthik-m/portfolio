@@ -9,44 +9,18 @@ export const ContactSection = () => {
     message: '',
   });
 
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors: { [key: string]: string } = {};
-    
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log('Form submitted:', formData);
-      // Handle form submission here
-      setFormData({ name: '', email: '', message: '' });
-    }
+    console.log('Form submitted:', formData);
+    // Handle form submission here
   };
 
-  const contactInfo = [
-    { label: 'Email', value: 'alex@developer.com', icon: '📧' },
-    { label: 'Phone', value: '+1 (555) 123-4567', icon: '📱' },
-    { label: 'Location', value: 'San Francisco, CA', icon: '📍' },
-  ];
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <section id="contact" className="py-20 relative">
@@ -60,14 +34,14 @@ export const ContactSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-orbitron font-bold gradient-text mb-6">
-            Let's Connect
+            Get In Touch
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
+            Let's create something amazing together. I'm always open to discussing new opportunities.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -75,49 +49,40 @@ export const ContactSection = () => {
             className="space-y-8"
           >
             <div className="glass-effect p-8 rounded-2xl">
-              <h3 className="text-2xl font-bold text-white mb-6">Get in Touch</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
               
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={info.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-center space-x-4 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-500/20"
-                  >
-                    <span className="text-2xl">{info.icon}</span>
-                    <div>
-                      <p className="text-blue-400 font-semibold">{info.label}</p>
-                      <p className="text-white">{info.value}</p>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                    📧
+                  </div>
+                  <div>
+                    <p className="text-gray-400">Email</p>
+                    <p className="text-white">alex@developer.com</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                    📱
+                  </div>
+                  <div>
+                    <p className="text-gray-400">Phone</p>
+                    <p className="text-white">+1 (555) 123-4567</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                    📍
+                  </div>
+                  <div>
+                    <p className="text-gray-400">Location</p>
+                    <p className="text-white">San Francisco, CA</p>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass-effect p-8 rounded-2xl"
-            >
-              <h3 className="text-2xl font-bold text-white mb-6">Follow Me</h3>
-              
-              <div className="flex space-x-4">
-                {['GitHub', 'LinkedIn', 'Twitter', 'Instagram'].map((social) => (
-                  <motion.button
-                    key={social}
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
-                  >
-                    {social[0]}
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.form
@@ -127,57 +92,58 @@ export const ContactSection = () => {
             onSubmit={handleSubmit}
             className="glass-effect p-8 rounded-2xl space-y-6"
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
-            
             <div>
-              <label className="block text-blue-400 font-semibold mb-2">Name</label>
+              <label htmlFor="name" className="block text-white font-semibold mb-2">
+                Name
+              </label>
               <input
                 type="text"
+                id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-white ${
-                  errors.name ? 'border-red-500' : 'border-gray-600'
-                }`}
+                required
+                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
                 placeholder="Your Name"
               />
-              {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
             </div>
 
             <div>
-              <label className="block text-blue-400 font-semibold mb-2">Email</label>
+              <label htmlFor="email" className="block text-white font-semibold mb-2">
+                Email
+              </label>
               <input
                 type="email"
+                id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-white ${
-                  errors.email ? 'border-red-500' : 'border-gray-600'
-                }`}
+                required
+                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
                 placeholder="your.email@example.com"
               />
-              {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
             </div>
 
             <div>
-              <label className="block text-blue-400 font-semibold mb-2">Message</label>
+              <label htmlFor="message" className="block text-white font-semibold mb-2">
+                Message
+              </label>
               <textarea
+                id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
+                required
                 rows={5}
-                className={`w-full px-4 py-3 bg-gray-800/50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-white resize-none ${
-                  errors.message ? 'border-red-500' : 'border-gray-600'
-                }`}
+                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors resize-none"
                 placeholder="Tell me about your project..."
               />
-              {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
             </div>
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
             >
               Send Message

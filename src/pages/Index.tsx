@@ -20,40 +20,53 @@ const Index = () => {
       setIsLoading(false);
     }, 3000);
 
+    // Apply dark class to html element
+    document.documentElement.classList.add('dark');
+    document.body.style.backgroundColor = '#0a0a0a';
+
     return () => clearTimeout(timer);
   }, []);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
+    if (!darkMode) {
+      document.documentElement.classList.add('dark');
+      document.body.style.backgroundColor = '#0a0a0a';
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.body.style.backgroundColor = '#ffffff';
+    }
   };
 
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
-      <AnimatePresence>
-        {isLoading && <Preloader />}
-      </AnimatePresence>
-      
-      {!isLoading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="relative overflow-hidden"
-        >
-          <ParticleBackground />
-          <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-          
-          <main className="relative z-10">
-            <HeroSection />
-            <AboutSection />
-            <ProjectsSection />
-            <ResumeSection />
-            <ContactSection />
-          </main>
-          
-          <Footer />
-        </motion.div>
-      )}
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900">
+        <AnimatePresence>
+          {isLoading && <Preloader />}
+        </AnimatePresence>
+        
+        {!isLoading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="relative overflow-hidden"
+          >
+            <ParticleBackground />
+            <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            
+            <main className="relative z-10">
+              <HeroSection />
+              <AboutSection />
+              <ProjectsSection />
+              <ResumeSection />
+              <ContactSection />
+            </main>
+            
+            <Footer />
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 };
