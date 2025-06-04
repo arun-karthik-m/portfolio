@@ -1,13 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { springConfig, fadeInUp, buttonHover } from '@/lib/animations';
 
-interface NavigationProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}
-
-export const Navigation: React.FC<NavigationProps> = ({ darkMode, toggleDarkMode }) => {
+export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
@@ -38,52 +34,67 @@ export const Navigation: React.FC<NavigationProps> = ({ darkMode, toggleDarkMode
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? 'glass-effect' : 'bg-transparent'
+      initial="hidden"
+      animate="visible"
+      variants={fadeInUp}
+      className={`fixed top-0 left-0 right-0 z-[9999] ${
+        isScrolled ? 'glass-effect' : 'bg-transparent backdrop-blur-sm'
       }`}
+      style={{
+        backgroundColor: isScrolled ? 'rgba(15, 23, 42, 0.95)' : 'transparent',
+        WebkitBackdropFilter: isScrolled ? 'blur(10px)' : 'none',
+        backdropFilter: isScrolled ? 'blur(10px)' : 'none',
+        transform: 'translate3d(0,0,0)', // Force GPU acceleration
+        willChange: 'transform, backdrop-filter, background-color' // Optimize animations
+      }}
     >
       <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-orbitron font-bold gradient-text cursor-pointer"
+            className="text-2xl font-orbitron font-bold gradient-text cursor-pointer mr-auto"
             onClick={() => scrollToSection('home')}
           >
-            &lt;DEV/&gt;
+            &lt;AK/&gt;
           </motion.div>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 mx-auto">
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                variants={{
+                  ...buttonHover,
+                  hover: {
+                    ...buttonHover.hover,
+                    scale: 1.1,
+                    color: '#fff',
+                    boxShadow: 'none'
+                  }
+                }}
+                whileHover="hover"
+                whileTap="tap"
                 onClick={() => scrollToSection(item.id)}
-                className={`relative text-sm font-medium transition-colors ${
-                  activeSection === item.id ? 'text-blue-400' : 'text-gray-300 hover:text-white'
+                className={`relative text-sm font-medium will-change-transform ${
+                  activeSection === item.id ? 'text-blue-400' : 'text-gray-300'
                 }`}
               >
                 {item.label}
-                {activeSection === item.id && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"
-                  />
-                )}
+                <AnimatePresence>
+                  {activeSection === item.id && (
+                    <motion.div
+                      layoutId="activeTab"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={springConfig}
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"
+                    />
+                  )}
+                </AnimatePresence>
               </motion.button>
             ))}
           </div>
-
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={toggleDarkMode}
-            className="p-2 rounded-full glass-effect hover:bg-opacity-20 transition-all"
-          >
-            {darkMode ? '☀️' : '🌙'}
-          </motion.button>
+          <div className="ml-auto"></div>
         </div>
       </div>
     </motion.nav>

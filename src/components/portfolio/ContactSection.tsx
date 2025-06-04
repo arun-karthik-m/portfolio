@@ -58,19 +58,43 @@ export const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-gray-400">Email</p>
-                    <p className="text-white">alex@developer.com</p>
+                    <p className="text-white">imarunkarthik20@gmail.com</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-4">
+                <a 
+                  href="https://github.com/arun-karthik-m" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 hover:opacity-80 transition-opacity"
+                >
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                    📱
+                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.699 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                    </svg>
                   </div>
                   <div>
-                    <p className="text-gray-400">Phone</p>
-                    <p className="text-white">+1 (555) 123-4567</p>
+                    <p className="text-gray-400">GitHub</p>
+                    <p className="text-white">github.com/arun-karthik-m</p>
                   </div>
-                </div>
+                </a>
+                
+                <a 
+                  href="https://www.linkedin.com/in/arunkarthik-m/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 hover:opacity-80 transition-opacity"
+                >
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-gray-400">LinkedIn</p>
+                    <p className="text-white">linkedin.com/in/arunkarthik-m</p>
+                  </div>
+                </a>
                 
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
@@ -78,7 +102,7 @@ export const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-gray-400">Location</p>
-                    <p className="text-white">San Francisco, CA</p>
+                    <p className="text-white">Chennai, Tamil Nadu</p>
                   </div>
                 </div>
               </div>

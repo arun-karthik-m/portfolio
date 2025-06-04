@@ -14,7 +14,6 @@ import { CustomCursor } from '@/components/portfolio/CustomCursor';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -33,19 +32,8 @@ const Index = () => {
     };
   }, []);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    if (!darkMode) {
-      document.documentElement.classList.add('dark');
-      document.body.style.backgroundColor = '#0a0a0a';
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.body.style.backgroundColor = '#ffffff';
-    }
-  };
-
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark' : ''}`} style={{ cursor: 'none' }}>
+    <div className="min-h-screen dark" style={{ cursor: 'none' }}>
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900">
         <CustomCursor />
         
@@ -61,7 +49,7 @@ const Index = () => {
             className="relative overflow-hidden"
           >
             <ParticleBackground />
-            <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Navigation />
             
             <main className="relative z-10">
               <HeroSection />

@@ -16,7 +16,7 @@ export const Footer = () => {
             className="text-center md:text-left mb-6 md:mb-0"
           >
             <h3 className="text-2xl font-orbitron font-bold gradient-text mb-2">
-              &lt;DEV/&gt;
+              &lt;AK/&gt;
             </h3>
             <p className="text-gray-400">
               Crafting the future, one line of code at a time.
@@ -51,7 +51,7 @@ export const Footer = () => {
           className="text-center mt-8 pt-8 border-t border-gray-800/50"
         >
           <p className="text-gray-500">
-            © 2024 Alex Developer. All rights reserved. Built with ❤️ and lots of ☕
+            © 2025 Arun Karthik. All rights reserved. Built with ❤️ and lots of ☕
           </p>
         </motion.div>
       </div>

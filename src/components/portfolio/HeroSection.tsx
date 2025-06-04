@@ -1,28 +1,30 @@
 
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import React from 'react';
 import { motion } from 'framer-motion';
-
-const AnimatedSphere = () => {
-  return (
-    <mesh>
-      <sphereGeometry args={[1, 32, 32]} />
-      <meshStandardMaterial 
-        color="#3b82f6"
-        roughness={0.1}
-        metalness={0.1}
-      />
-    </mesh>
-  );
-};
+import { scrollToSection } from '@/lib/utils';
+import blackholeVideo from '../../videos/blackhole.webm';
 
 export const HeroSection = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 cyber-grid opacity-20" />
+      {/* Blackhole Video Background */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src={blackholeVideo} type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/90" />
+      </div>
       
-      <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="absolute inset-0 cyber-grid opacity-10 z-10" />
+      
+      <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -66,9 +68,10 @@ export const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-4"
           >
             <motion.button
+              onClick={() => scrollToSection('projects')}
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 will-change-transform"
             >
               View My Work
             </motion.button>
@@ -89,22 +92,7 @@ export const HeroSection = () => {
           transition={{ duration: 1, delay: 0.8 }}
           className="h-96 relative"
         >
-          <Canvas 
-            camera={{ position: [0, 0, 5], fov: 75 }}
-            gl={{ antialias: true, alpha: true }}
-          >
-            <Suspense fallback={null}>
-              <ambientLight intensity={0.5} />
-              <pointLight position={[10, 10, 10]} intensity={1} />
-              <OrbitControls 
-                enableZoom={false} 
-                autoRotate 
-                autoRotateSpeed={2}
-                enablePan={false}
-              />
-              <AnimatedSphere />
-            </Suspense>
-          </Canvas>
+          {/* Space for future content or decoration */}
         </motion.div>
       </div>
       

@@ -6,84 +6,50 @@ import { Briefcase, GraduationCap, Award, Star, Download, MapPin, Calendar } fro
 export const ResumeSection = () => {
   const experiences = [
     {
-      title: 'Senior Full-Stack Developer',
-      company: 'TechCorp Inc.',
-      location: 'San Francisco, CA',
-      period: '2022 - Present',
-      type: 'Full-time',
-      description: 'Leading development of cutting-edge web applications using React, Node.js, and emerging technologies. Managed a team of 5 developers and delivered 15+ successful projects.',
+      title: 'Full Stack Developer',
+      company: 'Grafixui',
+      location: 'Chennai, Tamil Nadu, India · Remote',
+      period: 'Nov 2024 - Jan 2025',
+      type: 'Internship',
+      description: 'Developed and deployed scalable web applications. Designed responsive UIs and worked on FrontEnd. Optimized website performance and collaborated with a team.',
       achievements: [
-        'Increased application performance by 40%',
-        'Led migration to microservices architecture',
-        'Mentored 3 junior developers'
+        'Developed and deployed scalable web applications',
+        'Designed responsive user interfaces',
+        'Optimized website performance',
+        'Collaborated with team members'
       ],
-      skills: ['React', 'Node.js', 'TypeScript', 'AWS', 'MongoDB']
+      skills: ['JavaScript', 'React', 'HTML', 'CSS', 'Node.js', 'MongoDB', 'Git', 'Responsive Design', 'UI/UX', 'Performance Optimization', 'Team Collaboration', 'Deployment Strategies']
     },
     {
       title: 'Frontend Developer',
-      company: 'Digital Agency Pro',
-      location: 'New York, NY',
-      period: '2020 - 2022',
-      type: 'Full-time',
-      description: 'Specialized in creating interactive user interfaces and 3D web experiences for premium clients. Collaborated with design teams to deliver pixel-perfect implementations.',
+      company: 'New Technology Institution',
+      location: 'Coimbatore, Tamil Nadu, India · Hybrid',
+      period: 'Jun 2024',
+      type: 'Internship',
+      description: 'Built interactive web interfaces using React, HTML, CSS, and JavaScript. Learned and applied UI/UX principles in live projects.',
       achievements: [
-        'Built 20+ responsive web applications',
-        'Implemented WebGL-based 3D experiences',
-        'Improved user engagement by 60%'
+        'Developed interactive web interfaces',
+        'Applied UI/UX principles in real projects',
+        'Worked with modern frontend technologies'
       ],
-      skills: ['Vue.js', 'Three.js', 'WebGL', 'GSAP', 'Sass']
-    },
-    {
-      title: 'Junior Developer',
-      company: 'StartUp Labs',
-      location: 'Austin, TX',
-      period: '2019 - 2020',
-      type: 'Full-time',
-      description: 'Built responsive web applications and contributed to full-stack development projects. Gained expertise in modern JavaScript frameworks and backend technologies.',
-      achievements: [
-        'Developed 10+ web applications',
-        'Reduced load times by 35%',
-        'Implemented CI/CD pipelines'
-      ],
-      skills: ['JavaScript', 'Python', 'Django', 'PostgreSQL', 'Docker']
-    },
+      skills: ['JavaScript', 'React', 'HTML', 'CSS', 'UI/UX', 'Front-End Development']
+    }
   ];
 
   const education = [
     {
-      degree: 'Master of Computer Science',
-      school: 'Tech University',
-      location: 'California, USA',
-      period: '2017 - 2019',
-      type: 'Masters Degree',
-      description: 'Specialized in Computer Graphics and Human-Computer Interaction. Graduated with a 3.9 GPA.',
+      degree: 'Bachelor of Technology - BTech, Computer Science',
+      school: 'SRM IST Chennai',
+      location: 'Chennai, India',
+      period: 'Jun 2023 - May 2027',
+      type: 'Bachelor\'s Degree',
+      description: 'Pursuing Bachelor\'s degree in Computer Science with focus on Software Development and Emerging Technologies.',
       achievements: [
-        'Thesis: "Advanced WebGL Rendering Techniques"',
-        'Dean\'s List for 4 consecutive semesters',
-        'Research published in ACM Digital Library'
-      ],
-      courses: ['Computer Graphics', 'Machine Learning', 'Web Technologies', 'HCI Design']
-    },
-    {
-      degree: 'Bachelor of Software Engineering',
-      school: 'State University',
-      location: 'Texas, USA',
-      period: '2013 - 2017',
-      type: 'Bachelor Degree',
-      description: 'Graduated Magna Cum Laude with focus on Web Technologies and Software Architecture.',
-      achievements: [
-        'Magna Cum Laude graduate (GPA: 3.8)',
-        'President of Computer Science Society',
-        'Winner of Annual Hackathon 2016'
-      ],
-      courses: ['Data Structures', 'Software Architecture', 'Database Systems', 'Web Development']
-    },
-  ];
-
-  const certifications = [
-    { name: 'AWS Certified Solutions Architect', year: '2023' },
-    { name: 'Google Cloud Professional Developer', year: '2022' },
-    { name: 'MongoDB Certified Developer', year: '2021' },
+        'Finalist in national-level hackathons for AI-powered and frontend-driven solutions.',
+        'Built scalable MVPs using React, Tailwind, and MySQL under tight deadlines.',
+        'Recognized for innovation, UI/UX excellence, and team collaboration.'
+      ]
+    }
   ];
 
   return (
@@ -265,38 +231,6 @@ export const ResumeSection = () => {
               </div>
             </motion.div>
 
-            {/* Certifications */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center mr-3">
-                  <Award className="w-4 h-4 text-white" />
-                </div>
-                Certifications
-              </h3>
-              
-              <div className="space-y-3">
-                {certifications.map((cert, index) => (
-                  <motion.div
-                    key={cert.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="glass-effect p-4 rounded-lg border border-green-500/20 hover:border-green-500/40 transition-all duration-300"
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="text-white font-medium text-sm">{cert.name}</span>
-                      <span className="text-green-400 font-semibold text-sm">{cert.year}</span>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
           </div>
         </div>
       </div>

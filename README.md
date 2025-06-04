@@ -1,73 +1,121 @@
-# Welcome to your Lovable project
+# Arun Karthik - Modern Portfolio
 
-## Project info
+![Portfolio Screenshot](./src/images/Portfolio%20Screenshot.png)
 
-**URL**: https://lovable.dev/projects/a21249a8-dfc8-4813-b7a9-6744e9592112
+A stunning, modern, and performant portfolio website built with React, TypeScript, and Framer Motion. This portfolio showcases my skills, projects, and experience with smooth animations and a sleek, dark-themed UI.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Modern UI/UX** - Sleek dark theme with smooth animations and transitions
+- **Responsive Design** - Fully responsive layout that works on all devices
+- **Performance Optimized** - Built with performance in mind using code splitting and lazy loading
+- **Interactive Elements** - Custom cursor, particle background, and smooth scrolling
+- **Project Showcase** - Beautiful project cards with hover effects and links to live demos
+- **3D Elements** - Integrated Three.js for immersive 3D visualizations
+- **Form Handling** - Contact form with validation and submission handling
+- **Dark Mode** - Built with dark mode in mind for better readability
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a21249a8-dfc8-4813-b7a9-6744e9592112) and start prompting.
+- **Frontend**: 
+  - React 18
+  - TypeScript
+  - Tailwind CSS
+  - Framer Motion (for animations)
+  - Three.js (for 3D elements)
+  - React Query (for data fetching)
+  - Radix UI (for accessible components)
+  - React Hook Form (for forms)
+  - Vite (for fast development and building)
 
-Changes made via Lovable will be committed automatically to this repo.
+## Design System
 
-**Use your preferred IDE**
+The portfolio uses a consistent design system with:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Colors**: Dark theme with vibrant accents
+- **Typography**: Modern, clean fonts with proper hierarchy
+- **Spacing**: Consistent spacing scale using Tailwind's spacing system
+- **Animations**: Smooth, performant animations using Framer Motion
+- **Icons**: Heroicons for consistent, scalable icons
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Getting Started
 
-Follow these steps:
+### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js (v16 or later)
+- npm or yarn
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/arun-karthik-m/portfolio.git
+   cd portfolio
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
+
+### Building for Production
+
+```bash
+npm run build
+# or
+yarn build
 ```
 
-**Edit a file directly in GitHub**
+## Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+├── components/
+│   └── portfolio/
+│       ├── AboutSection.tsx      # About me section
+│       ├── ContactSection.tsx    # Contact form section
+│       ├── CustomCursor.tsx      # Custom animated cursor
+│       ├── Footer.tsx           # Site footer
+│       ├── HeroSection.tsx       # Hero section with animated background
+│       ├── Navigation.tsx        # Responsive navigation bar
+│       ├── ParticleBackground.tsx # Interactive particle background
+│       ├── Preloader.tsx         # Loading animation
+│       ├── ProjectsSection.tsx   # Project showcase
+│       └── ResumeSection.tsx     # Work experience and skills
+├── lib/
+│   ├── animations.ts           # Animation configurations
+│   └── utils.ts                # Utility functions
+├── pages/
+│   ├── Index.tsx              # Main page
+│   └── NotFound.tsx           # 404 page
+└── styles/                     # Global styles
+```
 
-**Use GitHub Codespaces**
+## Demo
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+[Live Demo](https://arunkarthik.vercel.app/)
 
-## What technologies are used for this project?
+## License
 
-This project is built with:
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Acknowledgments
 
-## How can I deploy this project?
+- Inspired by modern web design trends
+- Built with amazing open-source libraries
+- Special thanks to the React and Framer Motion communities
 
-Simply open [Lovable](https://lovable.dev/projects/a21249a8-dfc8-4813-b7a9-6744e9592112) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Made with ❤️ by Arun Karthik
