@@ -73,14 +73,16 @@ export const ResumeSection = () => {
           >
             Resume
           </motion.h2>
-          <motion.button
+          <motion.a
+            href="/Arun_Karthik_Resume.pdf"
+            download="Arun_Karthik_Resume.pdf"
             whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl font-semibold text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center gap-3 mx-auto"
+            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl font-semibold text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center gap-3 mx-auto cursor-pointer w-fit"
           >
             <Download className="w-5 h-5" />
             Download Full Resume
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         {/* Main Content */}

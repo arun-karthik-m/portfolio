@@ -118,13 +118,15 @@ export const HeroSection = () => {
                 View My Work
               </motion.button>
               
-              <motion.button
+              <motion.a
+                href="/Arun_Karthik_Resume.pdf"
+                download="Arun_Karthik_Resume.pdf"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto px-6 py-2.5 sm:py-3 glass-effect rounded-lg font-semibold text-white border border-blue-500/30 hover:border-blue-400 transition-all duration-300 text-sm sm:text-base"
+                className="w-full sm:w-auto px-6 py-2.5 sm:py-3 glass-effect rounded-lg font-semibold text-white border border-blue-500/30 hover:border-blue-400 transition-all duration-300 text-sm sm:text-base text-center cursor-pointer"
               >
                 Download CV
-              </motion.button>
+              </motion.a>
             </motion.div>
           </motion.div>
         </motion.div>
