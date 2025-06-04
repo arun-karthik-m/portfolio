@@ -51,17 +51,17 @@ export const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/10 to-pink-900/20" />
       <div className="absolute inset-0 cyber-grid opacity-10" />
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 md:mb-20"
         >
           <motion.h2 
             className="text-5xl md:text-7xl font-orbitron font-bold gradient-text mb-6"
@@ -87,11 +87,11 @@ export const AboutSection = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
-            <div className="glass-effect p-8 rounded-2xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
-              <h3 className="text-3xl font-bold gradient-text mb-6">Digital Craftsman</h3>
-              <p className="text-gray-300 text-lg leading-relaxed mb-4">
+            <div className="glass-effect p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
+              <h3 className="text-2xl sm:text-3xl font-bold gradient-text mb-4 sm:mb-6">Digital Craftsman</h3>
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-4">
               Creative and performance-driven Front-End Developer with a strong grasp of HTML, CSS, JavaScript, and modern web development frameworks. Known for translating design concepts into responsive, accessible, and visually compelling interfaces. Adept at leveraging tools like Loveable.dev, Cursor, Vercel to enhance development efficiency and project delivery. Possess a solid foundation in coding and a passion for creating seamless user experiences. Thrive in collaborative environments and bring a unique blend of technical precision, design intuition, and problem-solving to every project.
               </p>
             </div>
@@ -116,13 +116,13 @@ export const AboutSection = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
-                      className="glass-effect p-6 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300"
+                      className="glass-effect p-4 sm:p-6 rounded-lg sm:rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300"
                     >
-                      <div className={`w-12 h-12 mb-4 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center`}>
-                        <category.icon className="w-6 h-6 text-white" />
+                      <div className={`w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center`}>
+                        <category.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-3">{category.category}</h3>
-                      <ul className="space-y-2 text-gray-300">
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{category.category}</h3>
+                      <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-gray-300">
                         {category.skills.map((skill) => (
                           <li key={skill} className="flex items-center">
                             <span className="mr-2 text-blue-400">•</span>

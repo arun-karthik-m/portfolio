@@ -1,6 +1,6 @@
 # Arun Karthik - Modern Portfolio
 
-![Portfolio Screenshot](./src/images/Portfolio%20Screenshot.png)
+![Portfolio Screenshot]('/Users/arunkarthikm/Documents/portfolio/src/images/Portfolio Screenshot.png') 
 
 A stunning, modern, and performant portfolio website built with React, TypeScript, and Framer Motion. This portfolio showcases my skills, projects, and experience with smooth animations and a sleek, dark-themed UI.
 
